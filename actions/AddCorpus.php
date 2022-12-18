@@ -1,3 +1,4 @@
+<!--Add word in Database-->
 <?php 
     include('../db.php');
 
