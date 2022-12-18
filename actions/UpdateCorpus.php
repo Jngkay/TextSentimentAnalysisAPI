@@ -1,10 +1,11 @@
+<!--Update word in Database-->
 <?php
     include("../db.php");
+
         $wordtext = $_POST['Word'];
         $wordweight = $_POST['Weight'];
         $wordid= $_POST['wordID'];
         
-
         $sql = "UPDATE wordlist SET text='$wordtext', weight='$wordweight' WHERE ID=$wordid";
 
         if ($conn->query($sql) === TRUE) {
