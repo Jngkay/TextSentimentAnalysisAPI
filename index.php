@@ -12,13 +12,24 @@
 	<script type="text/javascript" charset="utf8" src="/DataTables/datatables.js"></script>
 	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 	<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/layout.css">
     <title>Document</title>
 </head>
 <body>
-<h2>Text Sentiment Analysis</h2>
-        <input type="text" id="text" placeholder="text here">
-        <input type="submit" onclick="getSentiment()"><br>
-        <h2>State: <span id="state"></span></h2>
+<div class="submission">
+    <div class="layerTwo">
+    <h1>Text Sentiment Analysis</h1>
+            <div class="enterText">
+                <input type="text" id="text" placeholder="Text Here"><br>
+                <input type="submit" value="Analyse" id="submit" onclick="getSentiment()"><br>
+            </div>               
+            <h2>State: <span id="state"></span></h2><br>
+        </div>
+        </div>
+</div>
+
+<div class="subm">
+</div>
 
         <script>
             function getSentiment(){
@@ -34,12 +45,16 @@
                 getStudentData();
             }
         </script>
-    
-    <form action="actions/AddCorpus.php" method="get">
-        <input type="text" name="corpusWord" placeholder="New corpus word">
-        <input type="number" name="corpusWeight" placeholder="Weight" >
-        <input type="submit">
-    </form>
+
+    <div class= "wholeTable">
+        <h3>Corpus Table</h3>
+    <div class = "giveData">
+        <form action="actions/AddCorpus.php" method="get">
+            <input type="text" name="corpusWord" placeholder="New corpus word">
+            <input type="number" name="corpusWeight" placeholder="Weight" >
+            <button type="submit" class="btn btn-success">Add Word</button>
+        </form>
+    </div>
     <table id="corpus_table" class="display">
     <thead>
         <tr>
@@ -61,12 +76,12 @@
 						<td><?php echo $row["text"]; ?></td>	
 						<td><?php echo $row["weight"]; ?></td>	
 						<td>
-                            <button class="action update" 
+                            <button class="action update btn btn-primary"
                                 data-id="<?php echo $row["ID"]; ?>"
                                 data-word="<?php echo $row["text"]; ?>"
                                 data-weight="<?php echo $row["weight"];?>">Update
                             </button>
-                            <a onclick="return alert('Word Deleted');" href="actions/DeleteCorpus.php?wordid=<?php echo $row["ID"];?>">Delete</a>
+                            <a onclick="return alert('Word Deleted');" href="actions/DeleteCorpus.php?wordid=<?php echo $row["ID"];?>" class="btn btn-danger">Delete</a>
                         </td>
 					</tr>
 
@@ -76,6 +91,7 @@
 			<?php $conn->close(); ?>
     </tbody>
 </table>
+                </div>
 
                     
 <div id="updateModal" class="modal">
@@ -121,6 +137,5 @@
         $("#updateModal").hide();
         });
 </script>
-
 </body>
 </html>
