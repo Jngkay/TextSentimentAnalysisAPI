@@ -2,8 +2,8 @@
 <?php 
     include('../db.php');
 
-        $corpusword = $_POST['corpusWord'];
-        $corpusweight = $_POST['corpusWeight'];
+        $corpusword = $_GET['corpusWord'];
+        $corpusweight = $_GET['corpusWeight'];
      
         $sql = "INSERT INTO wordlist (ID, text, weight) 
         VALUES ('', '$corpusword', '$corpusweight')";
